@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ba081e7084a841778a6298523c68fa38" Name="Diagram1">
+        <EntityTypeShape EntityType="FinalCaseStudyModel.AdminLogin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FinalCaseStudyModel.CourseDetail" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="FinalCaseStudyModel.Feepayment" Width="1.5" PointX="5.625" PointY="0.75" />
+        <EntityTypeShape EntityType="FinalCaseStudyModel.StudentDetail" Width="1.5" PointX="3.375" PointY="7" />
+        <AssociationConnector Association="FinalCaseStudyModel.FK__Feepaymen__Cours__74AE54BC" />
+        <AssociationConnector Association="FinalCaseStudyModel.FK__Feepaymen__Stude__73BA3083" />
+        <EntityTypeShape EntityType="FinalCaseStudyModel.Payment" Width="1.5" PointX="7.875" PointY="0.875" />
+        <AssociationConnector Association="FinalCaseStudyModel.FK__Payment__Payment__06CD04F7" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

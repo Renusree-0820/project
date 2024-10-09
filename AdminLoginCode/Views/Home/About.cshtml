@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cookie Card Design | Rustcode</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="cookie-warning">
+        <h3 class="cookie-title">We use cookies 🍪</h3>
+        <div class="cookie-text">We use cookies to ensure you have the best browsing experience on our website. By using our site, you acknowledge that you have read and understood our <a href="#">Cookie Policy</a> & <a href="#">Privacy Policy</a>.</div>
+        <div class="cookie-btn-wrapper">
+            <button class="cookie-btn">Accept</button>
+            <button href="/Home/Hompage" class="cookie-btn">Decline</button>
+        </div>
+    </div>
+
+</body>
+</html>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: "Mulish", sans-serif;
+  font-size: 22px;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.cookie-warning {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 30px;
+  border-radius: 4px;
+  color: #FFF;
+  z-index: 100;
+  background: linear-gradient(0deg, #F38375 0%, #EF6351 100%);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+}
+.cookie-title {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.cookie-text {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 20px;
+  line-height: 1.8em;
+  font-family: inherit;
+}
+.cookie-warning a {
+  color: rgba(255, 255, 255, 0.8);
+}
+.cookie-btn-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0.8rem;
+}
+.cookie-btn {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  padding: 16px 24px;
+  border-radius: 2px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #FFF;
+  font-family: inherit;
+  transition: 0.15s ease;
+}
+.cookie-btn:hover {
+  color: #111;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+</style>

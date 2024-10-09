@@ -1,0 +1,284 @@
+﻿@model AdminLoginCode.Controllers.CourseDetail
+
+@{
+    ViewBag.Title = "Create";
+   
+}
+
+
+@*@using (Html.BeginForm())*@
+@*{
+    @Html.AntiForgeryToken()*@
+
+@*<div class="form-horizontal">
+            <h4>CourseDetail</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Course_Id, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Course_Id, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Course_Id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Course_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Course_Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Course_Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="para" style="right:50px">
+                    @Html.LabelFor(model => model.Course_Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Course_Description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Course_Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Course_Fee, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Course_Fee, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Course_Fee, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FacultyName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.FacultyName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FacultyName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        @* <legend>Login Page</legend>*@
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @if (ViewBag.Message != null)
+        {
+            <p style="border:1px solid red">
+                @ViewBag.Message
+            </p>
+        }
+        
+
+        <html>
+        <head>
+            <title>Create Course Detail</title>
+            <link rel="stylesheet" href="style.css">
+        </head>
+        <body>
+            <div class="course-detail-form">
+                <a href="/ALogin/StudentDashBoard" class="btn btn-info">Back</a>
+                <h2>Create Course Detail</h2>
+                <form id="courseForm">
+                    <label for="Course_Id">Course ID:</label>
+                    <input type="text" id="Course_Id" name="Course_Id" required><br><br>
+
+                    <label for="Course_Name">Course Name:</label>
+                    <input type="text" id="Course_Name" name="Course_Name" required><br><br>
+
+                    <label for="Course_Description" ,style="Display:flex;Justify-content:space-between;Align-items:center;">Course Description:</label>
+                    <textarea id="Course_Description" name="Course_Description" rows="4" cols="50" required></textarea><br><br>
+
+                    <label for="Course_Fee">Course Fee:</label>
+                    <input type="number" id="Course_Fee" name="Course_Fee" required><br><br>
+
+                    <label for="FacultyName">Faculty Name:</label>
+                    <input type="text" id="FacultyName" name="FacultyName" required><br><br>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+
+                        </div>
+                    </div>
+                    @*<button type="submit">Create</button>*@
+                   
+                </form>
+            </div>
+            @*<div class="Coursedes">
+                    <label for="Course_Description",style="Display:flex;Justify-content:space-between;Align-items:center;">Course Description:</label>
+            <textarea id="Course_Description" name="Course_Description" rows="4" cols="50" required></textarea><br><br>
+                        </div>*@
+
+            <script src="script.js"></script>
+
+            <a href="/ALogic/StudentDashBoard" class="btn btn-info">Back</a>
+        </body>
+    </html>
+    </fieldset>
+        }
+        <style>
+            body {
+                background-image: url('../../images/images (9).jpg');
+               
+            }
+            .course-detail-form {
+                width: 400px;
+                margin: 20px auto;
+                padding: 20px;
+                border: 1px solid #ccc;
+               
+            }
+
+            label {
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            input, textarea {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ccc;
+            }
+           
+        </style>
+        <script>
+           
+            document.getElementById("courseForm").addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                // Get form values
+                var Course_Id = document.getElementById("Course_Id").value;
+                var Course_Name = document.getElementById("Course_Name").value;
+                var Course_Description = document.getElementById("Course_Description").value;
+                var Course_Fee = document.getElementById("Course_Fee").value;
+                var FacultyName = document.getElementById("FacultyName").value;
+
+                // Process form data (e.g., send to server)
+                console.log("CourseID:", Course_Id);
+                console.log("Course Name:", Course_Name);
+                console.log("Course Description:", Course_Description);
+                console.log("Course Fee:", Course_Fee);
+                console.log("Faculty Name:", FacultyName);
+            });
+
+        </script>
+
+
+
+        @*<html>
+        <head>
+            <title>My Courses</title>
+        <link rel="stylesheet" href="css/style.css" >
+
+
+        </head>
+        <body>
+            <div class="width-100 top-header">
+                <div class ="Container">
+                    <div class="width-100">
+                        <b class="news-list">Course_Description </b>
+                        <marquee  class="headquote">My Courses :Intelligence people can take the courses</marquee>
+
+                        </div>
+                </div>
+            </div>
+            <div class="width-100 header-meanu">
+                <div class="container">
+                    <div class="Logo"><img src="~/Images/logo.jpg"/></div>
+                    <ul class="main-menu">
+
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">Acadamics</a></li>
+
+                        <li><a href="#">G</a></li>
+
+                        <li><a href="#">Home</a></li>
+
+
+                    </ul>
+                </div>
+
+            </div>
+            <div class="width-100">
+                <img class="slider-Width" src="~/Images/Background course.jfif" >
+
+            </div>
+        </body>
+        </html>
+        <style>
+        margin:0px;
+        }
+        body,html: Robot,sans-serif,arial;
+        background:#fof3fa;
+        }
+        .width-100{
+            width:100%;
+            float:left;
+        }
+        .container{
+            width:1500px;
+            margin:0px auto;
+        }
+        .top-header{
+            background:#2196f3;
+            padding:5px 0px;
+            border-bottom: 1px solid #3131315e;
+        }
+        .news-lis{
+            background:#ffff;
+            color:red;
+            padding:6px;
+            font-size:20px;
+        }
+        .headquote{
+            font-size:18px;
+            color:#fff;
+            width:80%;
+        }
+        .header-meanu{
+            position :relative;
+            box-shadow:0px 2px 5px 0px #00000036;
+        }
+            .Logo {
+                width: fit-content;
+                float: left;
+
+            }
+        .main-menu{
+            list-style:none;
+            float:right;
+            margin-top:20px;
+        }
+
+        .main-menu a{
+            font-weight:500;
+            color:#3a3a3a;
+            font-size:20px;
+            text-decoration:none;
+        }
+        .main-menu li{
+            float:left;
+            padding:12px 15px;
+        }
+        .slider-Width{
+            width:100%;
+            height:auto;
+        }
+            </style>*@
+

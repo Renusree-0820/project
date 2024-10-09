@@ -1,0 +1,98 @@
+﻿
+@*@model WebApplication1.Controllers.FlightManagement*@
+@model IEnumerable<AdminLoginCode.Controllers.CourseDetail>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Search For Courses</h2>
+
+<form method="post" action="@Url.Action("Search", "CoursesToView")">
+    <div>
+        <label>Select the Course</label>
+        <input type="text" name="Course_Name" placeholder="Enter Course" required />
+    </div>
+    @*<div>
+        <label>To:</label>
+        <input type="text" name="destination" placeholder="Enter destination city" required />
+    </div>*@
+    <div>
+        <button type="submit">Search</button>
+    </div>
+</form>
+
+@*@if (Model != null && Model.Any())*@
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr >
+                <th>CourseID</th>
+                <th>CourseName</th>
+                <th>CourseDescription</th>
+                <th>Course Fee</th>
+                <th>Faculty Name</th>
+                
+                @* <th></th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var CourseDetail in Model)
+            {
+                <tr>
+                    <td>@CourseDetail.Course_Id</td>
+                    <td>@CourseDetail.Course_Name</td>
+                    <td>@CourseDetail.Course_Fee</td>
+                    <td>@CourseDetail.FacultyName</td>
+                    <td>@CourseDetail.Course_Description</td>
+                    
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<style>
+    body {
+        background-image: url('../../images/std3.jpg');
+
+    }
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+        margin: 20px 0;
+    }
+
+        .table th, .table td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .table td {
+            transition: background-color 0.3s;
+        }
+
+            .table td:hover {
+                background-color: #eaeaea;
+            }
+</style>
+
+

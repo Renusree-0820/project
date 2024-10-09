@@ -1,0 +1,102 @@
+﻿@model AdminLoginCode.Controllers.StudentDetail
+@{
+    ViewBag.Title = "StudentDashBoard";
+    Layout = null;
+}
+
+@*<h2>StudentDashBoard</h2>*@
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<fieldset>
+   @* <legend>Dashboard</legend>*@
+    @if (Session["StudentName"] != null)
+    {
+        <textarea>Welcome @Session["StudentName"].ToString()</textarea>
+    }
+</fieldset>
+@*<link  rel="stylesheet" type="text/css" href="Style">*@
+<body>
+    <header class="header">
+        <a href="">Student DashBoard</a>
+        <div class="logout">
+
+            <a href="@Url.Action("HomePage","Home")" class="btn btn-primary">LogOut</a>
+        </div>
+
+        @* <a href="HomePage.Home"> Logout</a>*@
+    </header>
+    <aside>
+        <ul>
+            <li class="menu-heading">Dashboards</li>
+            <li>
+                <a href="/CourseDetails/List">Courses available</a>
+                @*<a href="@Url.Action("Index","CoursesDetails")">Courses Available</a>*@
+                @*<a href="">Courses</a>*@
+            </li>
+            <li>
+                <a href="/Payment/Index")">Enroll for Course</a>
+                @* <a href=""> Enroll for Course</a>*@
+            </li>
+            <li class="menu-heading"> Profile</li>
+            <li>
+                <a href="/StudentDetails/Edit")">Update my Profile</a>
+                @*<a href="">Update my Profile</a>*@
+            </li>
+            @*<li>
+            <a href="">Student Details</a>
+        </li>*@
+        </ul>
+    </aside>
+    <div class="content">
+        <h1>WelCome Students</h1>
+        <h1>Excellence is not a skill .It is an attitude</h1>
+        
+    </div>
+</body>
+<style>
+    {
+        margin:0px;
+        padding:0px;
+    }
+    .header{
+       background-color:skyblue;
+       line-height:70px;
+       padding-left:30px;
+    }
+    a,a:hover
+    {
+        text-decoration:none!important;
+    }
+    .logout{
+        float:right;
+        margin-top:10px;
+        margin-right:20px;
+
+    }
+    ul{
+        background-color:#424a5b;
+        width:16%;
+        height:100%;
+        position:fixed;
+        padding-top:5%;
+        text-align:center;
+    }
+    ul li{
+        list-style:none;
+        padding-bottom:30px;
+        font-size:15px;
+    }
+    ul li a{
+        color:white;
+        font-weight:bold;
+    }
+    ul li a:hover{
+        color:skyblue;
+        text-decoration:none;
+    }
+    .content{
+        margin-left:20%;
+        margin-top:5%;
+    }
+</style>
+

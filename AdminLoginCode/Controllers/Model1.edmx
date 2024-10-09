@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FinalCaseStudyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminLogin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CourseDetails">
+          <Key>
+            <PropertyRef Name="Course_Id" />
+          </Key>
+          <Property Name="Course_Id" Type="int" Nullable="false" />
+          <Property Name="Course_Name" Type="varchar" MaxLength="8000" />
+          <Property Name="Course_Description" Type="varchar" MaxLength="8000" />
+          <Property Name="Course_Fee" Type="int" />
+          <Property Name="FacultyName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Feepayment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Student_Id" Type="int" />
+          <Property Name="Course_Id" Type="int" />
+          <Property Name="CourseFee" Type="int" />
+          <Property Name="Course_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Paid_Fee" Type="int" />
+          <Property Name="Pending_Fee" Type="int" />
+          <Property Name="Payment_Date" Type="varchar" MaxLength="250" />
+          <Property Name="Payment_Status" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="int" Nullable="false" />
+          <Property Name="PaymentMode" Type="varchar" MaxLength="50" />
+          <Property Name="Credit_Debit" Type="varchar" MaxLength="50" />
+          <Property Name="NetBanking" Type="varchar" MaxLength="50" />
+          <Property Name="UPIPayment" Type="varchar" MaxLength="50" />
+          <Property Name="Nameoncard" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreditCardNumber" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ExpMonth" Type="varchar" MaxLength="50" />
+          <Property Name="ExpYear" Type="int" />
+          <Property Name="CVV" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="StudentDetails">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="DateofBirth" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" />
+          <Property Name="CollegeName" Type="varchar" MaxLength="50" />
+          <Property Name="HallTicketNumber" Type="varchar" MaxLength="50" />
+          <Property Name="GuardianName" Type="varchar" MaxLength="50" />
+          <Property Name="GuardianContactNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contact" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="250" />
+          <Property Name="StudentName" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK__Feepaymen__Cours__74AE54BC">
+          <End Role="CourseDetails" Type="Self.CourseDetails" Multiplicity="0..1" />
+          <End Role="Feepayment" Type="Self.Feepayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseDetails">
+              <PropertyRef Name="Course_Id" />
+            </Principal>
+            <Dependent Role="Feepayment">
+              <PropertyRef Name="Course_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Feepaymen__Stude__73BA3083">
+          <End Role="StudentDetails" Type="Self.StudentDetails" Multiplicity="0..1" />
+          <End Role="Feepayment" Type="Self.Feepayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentDetails">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="Feepayment">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payment__Payment__06CD04F7">
+          <End Role="Feepayment" Type="Self.Feepayment" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Feepayment">
+              <PropertyRef Name="PaymentId" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FinalCaseStudyModelStoreContainer">
+          <EntitySet Name="AdminLogin" EntityType="Self.AdminLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseDetails" EntityType="Self.CourseDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feepayment" EntityType="Self.Feepayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentDetails" EntityType="Self.StudentDetails" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Feepaymen__Cours__74AE54BC" Association="Self.FK__Feepaymen__Cours__74AE54BC">
+            <End Role="CourseDetails" EntitySet="CourseDetails" />
+            <End Role="Feepayment" EntitySet="Feepayment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Feepaymen__Stude__73BA3083" Association="Self.FK__Feepaymen__Stude__73BA3083">
+            <End Role="StudentDetails" EntitySet="StudentDetails" />
+            <End Role="Feepayment" EntitySet="Feepayment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__Payment__06CD04F7" Association="Self.FK__Payment__Payment__06CD04F7">
+            <End Role="Feepayment" EntitySet="Feepayment" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FinalCaseStudyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminLogin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="FinalCaseStudyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminLogins" EntityType="Self.AdminLogin" />
+          <EntitySet Name="CourseDetails" EntityType="FinalCaseStudyModel.CourseDetail" />
+          <EntitySet Name="Feepayments" EntityType="FinalCaseStudyModel.Feepayment" />
+          <EntitySet Name="StudentDetails" EntityType="FinalCaseStudyModel.StudentDetail" />
+          <AssociationSet Name="FK__Feepaymen__Cours__74AE54BC" Association="FinalCaseStudyModel.FK__Feepaymen__Cours__74AE54BC">
+            <End Role="CourseDetail" EntitySet="CourseDetails" />
+            <End Role="Feepayment" EntitySet="Feepayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Feepaymen__Stude__73BA3083" Association="FinalCaseStudyModel.FK__Feepaymen__Stude__73BA3083">
+            <End Role="StudentDetail" EntitySet="StudentDetails" />
+            <End Role="Feepayment" EntitySet="Feepayments" />
+          </AssociationSet>
+          <EntitySet Name="Payments" EntityType="FinalCaseStudyModel.Payment" />
+          <AssociationSet Name="FK__Payment__Payment__06CD04F7" Association="FinalCaseStudyModel.FK__Payment__Payment__06CD04F7">
+            <End Role="Feepayment" EntitySet="Feepayments" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="CourseDetail">
+          <Key>
+            <PropertyRef Name="Course_Id" />
+          </Key>
+          <Property Name="Course_Id" Type="Int32" Nullable="false" />
+          <Property Name="Course_Name" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="Course_Description" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="Course_Fee" Type="Int32" />
+          <Property Name="FacultyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Feepayments" Relationship="FinalCaseStudyModel.FK__Feepaymen__Cours__74AE54BC" FromRole="CourseDetail" ToRole="Feepayment" />
+        </EntityType>
+        <EntityType Name="Feepayment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Student_Id" Type="Int32" />
+          <Property Name="Course_Id" Type="Int32" />
+          <Property Name="CourseFee" Type="Int32" />
+          <Property Name="Course_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Paid_Fee" Type="Int32" />
+          <Property Name="Pending_Fee" Type="Int32" />
+          <Property Name="Payment_Date" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Payment_Status" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CourseDetail" Relationship="FinalCaseStudyModel.FK__Feepaymen__Cours__74AE54BC" FromRole="Feepayment" ToRole="CourseDetail" />
+          <NavigationProperty Name="StudentDetail" Relationship="FinalCaseStudyModel.FK__Feepaymen__Stude__73BA3083" FromRole="Feepayment" ToRole="StudentDetail" />
+          <NavigationProperty Name="Payment" Relationship="FinalCaseStudyModel.FK__Payment__Payment__06CD04F7" FromRole="Feepayment" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="StudentDetail">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateofBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CollegeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HallTicketNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GuardianName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GuardianContactNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Contact" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="StudentName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Feepayments" Relationship="FinalCaseStudyModel.FK__Feepaymen__Stude__73BA3083" FromRole="StudentDetail" ToRole="Feepayment" />
+        </EntityType>
+        <Association Name="FK__Feepaymen__Cours__74AE54BC">
+          <End Type="FinalCaseStudyModel.CourseDetail" Role="CourseDetail" Multiplicity="0..1" />
+          <End Type="FinalCaseStudyModel.Feepayment" Role="Feepayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseDetail">
+              <PropertyRef Name="Course_Id" />
+            </Principal>
+            <Dependent Role="Feepayment">
+              <PropertyRef Name="Course_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Feepaymen__Stude__73BA3083">
+          <End Type="FinalCaseStudyModel.StudentDetail" Role="StudentDetail" Multiplicity="0..1" />
+          <End Type="FinalCaseStudyModel.Feepayment" Role="Feepayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentDetail">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="Feepayment">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Credit_Debit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NetBanking" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UPIPayment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nameoncard" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreditCardNumber" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ExpMonth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExpYear" Type="Int32" />
+          <Property Name="CVV" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Feepayment" Relationship="FinalCaseStudyModel.FK__Payment__Payment__06CD04F7" FromRole="Payment" ToRole="Feepayment" />
+        </EntityType>
+        <Association Name="FK__Payment__Payment__06CD04F7">
+          <End Type="FinalCaseStudyModel.Feepayment" Role="Feepayment" Multiplicity="1" />
+          <End Type="FinalCaseStudyModel.Payment" Role="Payment" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Feepayment">
+              <PropertyRef Name="PaymentId" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="PaymentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FinalCaseStudyModelStoreContainer" CdmEntityContainer="FinalCaseStudyEntities">
+          <EntitySetMapping Name="AdminLogins">
+            <EntityTypeMapping TypeName="FinalCaseStudyModel.AdminLogin">
+              <MappingFragment StoreEntitySet="AdminLogin">
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseDetails">
+            <EntityTypeMapping TypeName="FinalCaseStudyModel.CourseDetail">
+              <MappingFragment StoreEntitySet="CourseDetails">
+                <ScalarProperty Name="FacultyName" ColumnName="FacultyName" />
+                <ScalarProperty Name="Course_Fee" ColumnName="Course_Fee" />
+                <ScalarProperty Name="Course_Description" ColumnName="Course_Description" />
+                <ScalarProperty Name="Course_Name" ColumnName="Course_Name" />
+                <ScalarProperty Name="Course_Id" ColumnName="Course_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Feepayments">
+            <EntityTypeMapping TypeName="FinalCaseStudyModel.Feepayment">
+              <MappingFragment StoreEntitySet="Feepayment">
+                <ScalarProperty Name="Payment_Status" ColumnName="Payment_Status" />
+                <ScalarProperty Name="Payment_Date" ColumnName="Payment_Date" />
+                <ScalarProperty Name="Pending_Fee" ColumnName="Pending_Fee" />
+                <ScalarProperty Name="Paid_Fee" ColumnName="Paid_Fee" />
+                <ScalarProperty Name="Course_Name" ColumnName="Course_Name" />
+                <ScalarProperty Name="CourseFee" ColumnName="CourseFee" />
+                <ScalarProperty Name="Course_Id" ColumnName="Course_Id" />
+                <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentDetails">
+            <EntityTypeMapping TypeName="FinalCaseStudyModel.StudentDetail">
+              <MappingFragment StoreEntitySet="StudentDetails">
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="GuardianContactNumber" ColumnName="GuardianContactNumber" />
+                <ScalarProperty Name="GuardianName" ColumnName="GuardianName" />
+                <ScalarProperty Name="HallTicketNumber" ColumnName="HallTicketNumber" />
+                <ScalarProperty Name="CollegeName" ColumnName="CollegeName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DateofBirth" ColumnName="DateofBirth" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="FinalCaseStudyModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="CVV" ColumnName="CVV" />
+                <ScalarProperty Name="ExpYear" ColumnName="ExpYear" />
+                <ScalarProperty Name="ExpMonth" ColumnName="ExpMonth" />
+                <ScalarProperty Name="CreditCardNumber" ColumnName="CreditCardNumber" />
+                <ScalarProperty Name="Nameoncard" ColumnName="Nameoncard" />
+                <ScalarProperty Name="UPIPayment" ColumnName="UPIPayment" />
+                <ScalarProperty Name="NetBanking" ColumnName="NetBanking" />
+                <ScalarProperty Name="Credit_Debit" ColumnName="Credit_Debit" />
+                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

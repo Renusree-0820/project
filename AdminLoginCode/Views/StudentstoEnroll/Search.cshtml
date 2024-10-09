@@ -1,0 +1,84 @@
+﻿@*@model AdminLoginCode.Controllers.StudentDetail*@
+@model IEnumerable<AdminLoginCode.Controllers.StudentDetail>
+
+@{
+    ViewBag.Title = "Search";
+}
+@*@model IEnumerable<AdminLoginCode.Controllers.CourseDetail>
+
+    @{
+        ViewBag.Title = "Index";
+    }*@
+<h2>Search For  Student Enrolled</h2>
+
+<form method="post" action="@Url.Action("Search", "StudentstoEnroll")">
+    <div>
+        <label>StudentId</label>
+        <input type="text" name="StudentId" placeholder="StudentId" required />
+    </div>
+    @*<div>
+            <label>To:</label>
+            <input type="text" name="destination" placeholder="Enter destination city" required />
+        </div>*@
+    <div>
+        <button type="submit">Search</button>
+    </div>
+</form>
+
+@*@if (Model != null && Model.Any())*@
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>StudentId</th>
+                <th>StudentName</th>
+                <th>FirstName</th>
+                <th>LastName </th>
+                <th>Email</th>
+                <th>DateofBirth</th>
+                <th>Gender</th>
+                <th>CollegeName</th>
+                <th>HallTicketNumber </th>
+                <th>GuardianName</th>
+                <th>GuardianContactNumber</th>
+                <th>Contact</th>
+                <th>Address</th>
+                @* <th></th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var CourseDetail in Model)
+            {
+                <tr>
+                    <td>StudentId</td>
+                    <td>StudentName</td>
+                    <td>FirstName</td>
+                    <td>LastName </td>
+                    <td>Email</td>
+                    <td>DateofBirth</td>
+                    <td>Gender</td>
+                    <td>CollegeName</td>
+                    <td>HallTicketNumber </td>
+                    <td>GuardianName</td>
+                    <td>GuardianContactNumber</td>
+                    <td>Contact</td>
+                    <td>Address</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<style>
+    body {
+        background-image: url('../../images/greenbackground.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+    }
+</style>
+
+

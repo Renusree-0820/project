@@ -1,0 +1,66 @@
+﻿@model IEnumerable<AdminLoginCode.Controllers.CourseDetail>
+
+@{
+    ViewBag.Title = "List";
+   
+}
+
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Course_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Course_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Course_Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Course_Fee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FacultyName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course_Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course_Fee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FacultyName)
+        </td>
+      @*  <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Course_Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Course_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Course_Id })
+        </td>*@
+    </tr>
+}
+
+</table>
+<style>
+    body {
+        background-image: url('../../images/images (8).jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+    }
+</style>

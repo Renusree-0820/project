@@ -1,0 +1,59 @@
+﻿@*
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+*@
+@model IEnumerable<AdminLoginCode.Controllers.CourseDetail>
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+<form method="post" action="@Url.Action("Search", "Courses")">
+
+    <div>
+        <label>Select the Course:</label>
+        <input type="text" name="Course_Name" placeholder="Enter Course" required />
+    </div>
+    @*<div>
+            <label>To:</label>
+            <input type="text" name="destination" placeholder="Enter destination city" required />
+        </div>*@
+    <div>
+        <button type="submit">Course_Name</button>
+    </div>
+</form>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>CourseID</th>
+                <th>CourseName</th>
+                <th>CourseDescription</th>
+                <th>Course Fee</th>
+                <th>Faculty Name</th>
+
+                @* <th></th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var CourseDetail in Model)
+            {
+                <tr>
+                    <td>@CourseDetail.Course_Id</td>
+                    <td>@CourseDetail.Course_Name</td>
+                    <td>@CourseDetail.Course_Fee</td>
+                    <td>@CourseDetail.FacultyName</td>
+                    <td>@CourseDetail.Course_Description</td>
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}

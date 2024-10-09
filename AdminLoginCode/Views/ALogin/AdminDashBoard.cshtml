@@ -1,0 +1,16 @@
+﻿@model AdminLoginCode.Controllers.AdminLogin
+
+@{
+    ViewBag.Title = "AdminDashBoard";
+}
+
+<h2>AdminDashBoard</h2>
+<fieldset>
+    <legend>Dashboard</legend>
+    @if (Session["AdminId"] != null)
+    {
+        <textarea>Welcome @Session["UserName"].ToString()</textarea>
+    }
+</fieldset>
+
+

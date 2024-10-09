@@ -1,0 +1,307 @@
+﻿@model AdminLoginCode.Controllers.AdminLogin
+
+@{
+    ViewBag.Title = "Admin_Login";
+    Layout = null;
+}
+
+
+@*@using (Html.BeginForm("Admin_Login", "ALogin", FormMethod.Post))*@
+@*{
+        <fieldset>
+            <legend>Login Page</legend>
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            @if (ViewBag.Message != null)
+            {
+                <p style="border:1px solid red">
+                    @ViewBag.Message
+                </p>
+            }
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(a => a.AdminId)</td>
+                    <td>@Html.TextBoxFor(a => a.AdminId) </td>
+                    <td>@Html.ValidationMessageFor(a => a.AdminId)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(a => a.Password)</td>
+                    <td>@Html.TextBoxFor(a => a.Password)</td>
+                    <td>@Html.ValidationMessageFor(a => a.Password)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="Submit" value="Login" /></td>
+                </tr>
+            </table>
+        </fieldset>
+    }
+*@
+@*@using (Html.BeginForm("Admin_Login", "ALogin", FormMethod.Post))
+    {
+        <fieldset>
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            @if (ViewBag.Message != null)
+            {
+                <p style="border:1px solid red">
+                    @ViewBag.Message
+                </p>
+            }
+            <script src="~/Scripts/bootstrap.min.js"></script>
+            <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+            <div class="login-container">
+                <div class="Container">
+                    <div class="document">
+                        <h1>Login</h1>
+                        <form id="loginForm">
+                            <div class="input-group">
+                                <label for="AdminId">AdminId</label>
+                                <input type="text" id="AdminId" name="AdminId" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="Password">Password</label>
+                                <input type="Password" id="Password" name="Password" required>
+                            </div>
+                            <button type="submit">Login</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </fieldset>
+    }
+    <body>
+        <style>
+
+            font-family:"Comic Sans MS", sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            }
+
+            .login-container {
+                background: white;
+                border: 2px solid #000;
+                padding: 40px;
+                width: 320px;
+                box-shadow: 10px 10px 0 #000;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+            }
+
+            h1 {
+                font-size: 28px;
+                margin-bottom: 30px;
+            }
+
+            .input-group {
+                margin-bottom: 20px;
+                text-align: left;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 8px;
+                font-size: 16px;
+            }
+
+            input {
+                width: 100%;
+                padding: 12px;
+                border: 2px solid #000;
+                box-shadow: 3px 3px 0 #000;
+                font-size: 14px;
+            }
+
+            button {
+                background-color: #ffcc00;
+                border: 2px solid #000;
+                padding: 12px;
+                width: 100%;
+                cursor: pointer;
+                box-shadow: 3px 3px 0 #000;
+                font-size: 16px;
+            }
+
+                button:hover {
+                    background-color: #ffeb3b;
+                }
+
+            body {
+                margin: 0;
+                padding: 0;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #f4f4f4;
+            }
+
+            /* .login-container {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                width: 100%;
+                                height: 100%;
+                            }
+
+                            .login-box {
+                                background-color: #fff;
+                                padding: 20px;
+                                border-radius: 5px;
+                                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                                max-width: 400px;
+                                width: 100%;
+                            }
+                    */
+
+        </style>
+    </body>
+
+*@
+
+@using (Html.BeginForm("Admin_Login","ALogin", FormMethod.Post))
+{
+    <fieldset>
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @if (ViewBag.Message != null)
+        {
+            <p style="border:1px solid red">
+                @ViewBag.Message
+            </p>
+        }
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <div class="login-container">
+            <div class="Container">
+                <div class="document">
+                    <h1>Login</h1>
+                    <form id="loginForm">
+                        <div class="input-group">
+                            <label for="AdminId">AdminId</label>
+                            <input type="text" id="AdminId" name="AdminId" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="Password">Password</label>
+                            <input type="Password" id="Password" name="Password" required>
+                        </div>
+                        <button type="submit">Login</button>
+                    </form>
+                </div>
+
+                <a href="/Home/HomePage">Back to Home</a>
+
+            </div>
+        </div>
+    </fieldset>
+}
+<body>
+    <style>
+        body {
+            background-image: url('../../images/screenshot 2024-09-09 160037.png');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+        }
+
+   .ass {
+        font-family:"Comic Sans MS", sans-serif;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        }
+
+        .login-container {
+            background: white;
+            border: 2px solid #000;
+            padding: 40px;
+            width: 320px;
+            box-shadow: 10px 10px 0 #000;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #000;
+            box-shadow: 3px 3px 0 #000;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #ffcc00;
+            border: 2px solid #000;
+            padding: 12px;
+            width: 100%;
+            cursor: pointer;
+            box-shadow: 3px 3px 0 #000;
+            font-size: 16px;
+        }
+
+            button:hover {
+                background-color: #ffeb3b;
+            }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+
+         .login-container {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 150%;
+                            height: 50%;
+                        }
+
+                        .login-box {
+                            background-color: #fff;
+                            padding: 20px;
+                            border-radius: 5px;
+                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                            max-width: 400px;
+                            width: 100%;
+                        }
+               
+
+    </style>
+</body>

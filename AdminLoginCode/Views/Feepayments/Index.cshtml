@@ -1,0 +1,81 @@
+﻿@model IEnumerable<AdminLoginCode.Controllers.Feepayment>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Course_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseFee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Course_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Paid_Fee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pending_Fee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Payment_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Payment_Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseDetail.Course_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentDetail.FirstName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseFee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Paid_Fee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pending_Fee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Payment_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Payment_Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseDetail.Course_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentDetail.FirstName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.PaymentId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.PaymentId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.PaymentId })
+        </td>
+    </tr>
+}
+
+</table>
